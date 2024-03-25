@@ -1,0 +1,30 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head> -->
+<% layout("/layouts/boilerPlate") %>
+<body>
+    <h3 class="title">Welcome to Enlighten Thoughts</h3>
+    <hr />
+    <% for(let content of allContents){ %>
+        <h3 class="info">Username: @<%= content.userName%></h3>
+        <h3 class="info">Description: <%= content.content%></h3>
+        <div class="img-div"><img src="<%= content.image %>" class="img"><a class="lower"><i class="fa-regular fa-heart"></i>Like</a> <a class="lower"><i class="fa-regular fa-comment"></i>Comment</a><a class="lower"><i class="fa-solid fa-share"></i>Share</a></div> 
+        
+        <br />
+        <br />
+        <div class="btns">
+        <a href="/contents/<%= content._id %>/edit" class="btn">Edit</a>
+        <a href="/contents/<%= content._id%>" class="btn">delete</a>
+        
+        </div>
+        <%}%>
+        <br />
+        <br />
+        <!-- <a href="contents/new"><button>New Post</button></a> -->
+        
+</body>
+<!-- </html> -->

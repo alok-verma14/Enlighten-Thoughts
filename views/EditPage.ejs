@@ -1,0 +1,22 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enlighten Thoughts</title>
+</head> -->
+<% layout("/layouts/boilerPlate") %>
+
+<body>
+    <h3>Welcome @<%= content.userName %> to the Edit Page</h3>
+    <h4>Your User id = <%= content._id %></h4>
+    <h4>you posted on <%= content.createdAt %></h4>
+    <form method="POST" action="/contents/<%= content._id %>?_method=PUT">
+        <p>Content: <textarea  name="send[content]" rows="6" cols="50"><%= content.content %></textarea></p>
+        <p>Image Link: <textarea name="send[image]" rows="3" cols="50"><%= content.image %></textarea> </p>
+        <br />
+        <br />
+        <button>Update</button>
+    </form>
+</body>
+<!-- </html> -->
