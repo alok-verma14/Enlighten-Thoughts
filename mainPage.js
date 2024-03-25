@@ -5,8 +5,9 @@ const PORT = 8080;
 const Listing = require("./models/content.js");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
+const dotenv = require('dotenv').config();
+const MONGO_URL = "mongodb+srv://verma_alok:WTF10YaYxRGCt3A3@cluster0.tbmiofa.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
-const MONGO_URL = "mongodb+srv://verma_alok:zYGr760GYsRDfFsd@cluster0.tbmiofa.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 const mongoose = require("mongoose");
 const Content = require("./models/content.js");
 
@@ -19,6 +20,7 @@ app.use(express.static(path.join(__dirname, "/public")));
 main()
 .then(()=>{
     console.log("connected");
+
 })
 .catch((err)=>{
     console.log(err);
@@ -48,11 +50,7 @@ app.get("/contents/:id/edit", async(req, res)=>{
 //update Route
 app.put("/contents/:id", async(req, res)=>{
     let {id} = req.params;
-    // let {content: content} = req.body;
-    // let {image: image}=req.body;
-    //console.log(req.body);
-     //console.log(req.body);
-     //console.log(image);
+    
     let updatedUser = await Content.findByIdAndUpdate(id, {...req.body.send}, {runValidators: true, new: true});
     //console.log(updatedUser);
     res.redirect("/contents");
